@@ -1,0 +1,53 @@
+syntax = "proto3";
+option java_package = "com.github.chenmingq.proto";
+option java_outer_classname = "UserProto";
+
+// 请求登录
+message ReqLoginMessage {
+    Login login = 1;
+}
+
+// 登录结果
+message ResLoginMessage {
+    UserInfo userInfo = 1; //用户信息
+    int32 state = 2; //登陆结果
+    // 登陆结果
+    enum LOGIN_STATE {
+        OK = 0; // 登陆成功
+        FAILED_TO_LOGIN = 1; // 登陆失败
+    }
+}
+
+// 请求获取短信验证码
+message ReqGetSmsCodeMessage {
+    string phone = 1; // 手机号码
+}
+
+// 心跳
+message ResHeadMessage {
+    int64 timestamp = 1; // 服务器时间戳
+}
+
+// 请求注册用户
+message ReqRegisterMessage {
+    string userName = 1; // 用户昵称
+    string account = 2; // 账号
+    string password = 3; // 密码
+}
+
+// 请求退出登陆
+message ReqLogOutMessage {
+}
+
+// 登录消息体
+message Login {
+    string account = 1; // 账号
+    string password = 2; // 密码
+    string code = 3; // 验证码
+}
+
+// 用户信息
+message UserInfo {
+    int64 userId = 1; // 用户id
+    string userName = 2; // 用户名称
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages moduleId="100" moduleName="用户模块id" desc="用户" package="com.github.chenmingq.user">
+
+    <message cmdId="1" name="ReqLoginMessage" desc="请求登录">
+        <proto>com.github.chenmingq.proto.UserProto.ReqLoginMessage</proto>
+    </message>
+
+    <message cmdId="2" name="ResLoginMessage" desc="登录结果">
+        <proto>com.github.chenmingq.proto.UserProto.ResLoginMessage</proto>
+    </message>
+
+    <message cmdId="3" name="ReqGetSmsCodeMessage" desc="请求获取短信验证码"/>
+
+    <message cmdId="4" name="ResHeadMessage" desc="心跳">
+        <proto>com.github.chenmingq.proto.UserProto.ResHeadMessage</proto>
+    </message>
+
+    <message cmdId="5" name="ReqRegisterUserMessage" desc="注册">
+        <proto>com.github.chenmingq.proto.UserProto.ReqRegisterMessage</proto>
+    </message>
+
+    <message cmdId="6" name="ReqLogOutMessage" desc="退出登录"/>
+
+</messages>

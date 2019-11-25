@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<messages moduleId="101" moduleName="好友模块id" desc="好友" package="com.github.chenmingq.chat">
+
+    <message cmdId="1" name="ReqChatMessage" desc="发起聊天"/>
+    <message cmdId="2" name="ResChatStateMessage" desc="聊天状态结果"/>
+    <message cmdId="3" name="ReqAddGroupMessage" desc="添加群聊"/>
+    <message cmdId="4" name="ResAddGroupResultMessage" desc="添加群聊结果"/>
+    <message cmdId="5" name="ReqGetChatRecordingMessage" desc="获取聊天记录"/>
+    <message cmdId="6" name="ResChatRecordingMessage" desc="获取聊天记录结果"/>
+    <message cmdId="7" name="ReqViewFriendInfoMessage" desc="查看好友信息"/>
+    <message cmdId="8" name="ResViewFriendInfoMessage" desc="返回查看的好友信息"/>
+
+</messages>
