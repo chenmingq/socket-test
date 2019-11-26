@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+    <properties resource="db_server.properties"/>
+
+    <settings>
+        <!--开启自动驼峰命名规则-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+    <!-- 配置数据源1 -->
+    <environments default="db1">
+        <environment id="db1">
+            <transactionManager type="JDBC"/>
+
+            <dataSource type="com.github.chenmingq.server.basic.db.DruidDataSourceFactory">
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+                <!-- 配置初始化大小、最小、最大 -->
+                <property name="initialSize" value="${initialSize}"/>
+                <property name="minIdle" value="${minIdle}"/>
+                <property name="maxActive" value="${maxActive}"/>
+                <!-- 配置获取连接等待超时的时间 -->
+                <property name="maxWait" value="${maxWait}"/>
+                <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+                <property name="timeBetweenEvictionRunsMillis" value="${timeBetweenEvictionRunsMillis}"/>
+                <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+                <property name="minEvictableIdleTimeMillis" value="${minEvictableIdleTimeMillis}"/>
+
+                <property name="validationQuery" value="${validationQuery}"/>
+                <property name="testWhileIdle" value="${testWhileIdle}"/>
+                <property name="testOnBorrow" value="${testOnBorrow}"/>
+                <property name="testOnReturn" value="${testOnReturn}"/>
+                <property name="poolPreparedStatements" value="${poolPreparedStatements}"/>
+                <property name="maxOpenPreparedStatements" value="${maxOpenPreparedStatements}"/>
+                <property name="asyncInit" value="${asyncInit}"/>
+
+                <!-- 配置监控统计拦截的filters，去掉后监控界面sql无法统计 -->
+                <property name="filters" value="stat"/>
+            </dataSource>
+        </environment>
+    </environments>
+</configuration>

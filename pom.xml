@@ -210,7 +210,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.netty.test.server.all.ServerStart</mainClass>
+                            <mainClass>com.github.chenmingq.server.all.ServerStart</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

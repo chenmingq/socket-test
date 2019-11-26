@@ -19,5 +19,39 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <finalName>build-msg-template</finalName>
+        <plugins>
+            <!--将项目依赖包和项目打为一个包 mvn clean compile assembly:single-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>${maven-assembly-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.github.chenmingq.msg.template.Main</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+
+                <!-- assembly:single是maven的goal. 通常情况下，这个goal要绑定到 maven build 的phase里 -->
+                <!-- 可以使用 mvn clean package 来打包执行-->
+                <executions>
+                    <execution>
+                        <id>make-assembly</id> <!-- this is used for inheritance merges -->
+                        <phase>package</phase> <!-- bind to the packaging phase -->
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

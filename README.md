@@ -1,13 +1,12 @@
 # tcp协议栈开发
 
-<hr>
-1. JDK1.8 
-2. Netty-4.1.42.Final
-3. protobuf-java 3.9 
+1. [JDK1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+2. [Netty-4.1.42.Final](https://netty.io/wiki/)
+3. [protobuf-java 3.9](https://github.com/protocolbuffers/protobuf) 
 <hr>
 
 ### 消息头
-    
+
 | 名称 |长度|数据|说明|
 |:---:|:---:|:---:|:---:|
 | magic |4 |0x0CAFFEE0|唯一通信标志 |
@@ -16,9 +15,8 @@
 | cmdId  |4|-|具体功能|
 | body  |-|body.length|消息体|
 
-### 简单的使用说明
+### 模块说明
 
-#### 模块说明
 - common
 ```text
 项目中的公共模块
@@ -33,6 +31,7 @@
 ```text
 生成xml配置的协议消息
 可打出jar包单独拎出来执行
+resources的msg-id为协议消息目录,可以直接执行jar文件
 ```
 - server-basic
 ```text
@@ -70,7 +69,7 @@ proto文件编译可执行的java对象
 通过MAIN方法启动 com.github.chenmingq.server.all.ServerStart
 ```
 ```java
-@ScanMapping(name = "controller的包路径")
+@ScanMapping(name = "com.github.chenmingq.server.system.controller")
 public class ServerStart {
     public static void main(String[] args) {
          Server.startServer(ServerStart.class, args);
@@ -87,6 +86,22 @@ public class ServerStart {
 // 具体实现客户端创建的请求功能
 ```
 
+##### 打包服务
+```shell script
+  cd socket-test 
+  mvn clean package
+```
+
+##### 启动服务
+```shell script
+    cd socket-test/server-all/target
+    java -jar server-all-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+###### demo
+1. 实现了客户端登陆测试
+2. 实现了客户端用户注册测试
+
 - 注解说明
 
 | 名称  | 说明 |
@@ -99,6 +114,7 @@ public class ServerStart {
 
 
 ### 服务端功能
+
 1. 存储二进制数据
 2. guava缓存
 3. session管理
