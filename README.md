@@ -15,6 +15,16 @@
 | cmdId  |4|-|具体功能|
 | body  |-|body.length|消息体|
 
+### 注解说明
+
+| 名称  | 说明 |
+|:---:|:---:|
+| ScanMapping  | 控制器的包路径 |
+| ReqMapping  | 标记协议号的分发   | 
+| AutoIn  | 对象自动注入  |
+| MapperScan  | 扫描mapper层,标记为操作db的对象  |
+| ServiceImpl  | 标记需要service服务实现的interface对象|
+
 ### 模块说明
 
 - common
@@ -101,17 +111,6 @@ public class ServerStart {
 ###### demo
 1. 实现了客户端登陆测试
 2. 实现了客户端用户注册测试
-
-- 注解说明
-
-| 名称  | 说明 |
-|:---:|:---:|
-| ScanMapping  | 控制器的包路径 |
-| ReqMapping  | 标记协议号的分发   | 
-| AutoIn  | 对象自动注入  |
-| MapperScan  | 扫描mapper层,标记为操作db的对象  |
-| ServiceImpl  | 标记需要service服务实现的interface对象|
-
 
 ### 服务端功能
 
