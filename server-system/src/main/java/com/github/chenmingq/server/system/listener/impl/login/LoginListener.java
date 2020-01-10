@@ -1,8 +1,7 @@
 package com.github.chenmingq.server.system.listener.impl.login;
 
-import com.github.chenmingq.common.utils.executor.ExecutorUtil;
+import com.github.chenmingq.server.basic.beat.BeatManager;
 import com.github.chenmingq.server.basic.listener.IListener;
-import com.github.chenmingq.server.system.beat.ServerHeartbeatMessage;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -21,6 +20,6 @@ public class LoginListener implements IListener {
             return;
         }
         long userId = (long) obj;
-        ExecutorUtil.heartbeatExecutor.execute(new ServerHeartbeatMessage(userId));
+        BeatManager.getInstance().addUser(userId);
     }
 }

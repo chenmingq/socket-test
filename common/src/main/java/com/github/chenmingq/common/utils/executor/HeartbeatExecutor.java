@@ -14,8 +14,8 @@ import java.util.concurrent.*;
 public class HeartbeatExecutor extends AbstractExecutor {
 
 
-    private static final int CORE_POOL_SIZE = 100;
-    private static final int MAXIMUM_POOL_SIZE = 100000;
+    private static final int CORE_POOL_SIZE = 2;
+    private static final int MAXIMUM_POOL_SIZE = 2;
     private static final long KEEP_ALIVE_TIME = 1000;
     private static final int WORK_QUEUE_SIZE = 1024;
 

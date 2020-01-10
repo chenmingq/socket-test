@@ -11,6 +11,7 @@ import com.github.chenmingq.common.utils.MD5Utils;
 import com.github.chenmingq.common.utils.MessageUtil;
 import com.github.chenmingq.msg.user.ResLoginMessage;
 import com.github.chenmingq.proto.UserProto;
+import com.github.chenmingq.server.basic.beat.BeatManager;
 import com.github.chenmingq.server.basic.listener.ListenerFactory;
 import com.github.chenmingq.server.basic.listener.ListenerType;
 import com.github.chenmingq.server.system.cache.guava.GuavaCacheTemplate;
@@ -60,6 +61,7 @@ public class UserServiceImpl implements UserService {
             log.info("账号 [{}] 已存在", account);
             return;
         }
+        log.info("账号注册成功,开始准备登陆 [{}]", account);
 
         AttributeUtil.set(session.getChannel(), ChannelAttrKey.SESSION, session);
 
@@ -76,6 +78,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void logOut(Session session) {
+        BeatManager.getInstance().removeUser(session.getUserId());
         SessionManager.getInstance().removeSession(session.getUserId());
         AttributeUtil.remove(session.getChannel(), ChannelAttrKey.SESSION);
     }

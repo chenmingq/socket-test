@@ -22,7 +22,7 @@ public class ClientUserServiceImpl implements ClientUserService {
 
     @Override
     public void sendLogin(ClientSession session, String account, String password) {
-
+        log.info("请求登陆账号,[{}]", account);
         UserProto.ReqLoginMessage.Builder proto = UserProto.ReqLoginMessage.newBuilder();
         UserProto.Login.Builder loginProto = UserProto.Login.newBuilder();
         loginProto.setAccount(account);
@@ -37,6 +37,7 @@ public class ClientUserServiceImpl implements ClientUserService {
 
     @Override
     public void sendRegister(ClientSession session, String userName, String account, String password) {
+        log.info("请求注册账号,[{}]", account);
         UserProto.ReqRegisterMessage.Builder builder = UserProto.ReqRegisterMessage.newBuilder();
         builder.setAccount(account);
         builder.setPassword(password);

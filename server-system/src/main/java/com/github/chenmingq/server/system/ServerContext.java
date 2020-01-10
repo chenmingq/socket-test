@@ -1,6 +1,8 @@
 package com.github.chenmingq.server.system;
 
 import com.github.chenmingq.common.constant.CommonConst;
+import com.github.chenmingq.common.utils.executor.ExecutorUtil;
+import com.github.chenmingq.server.basic.beat.ServerHeartbeatMessage;
 import com.github.chenmingq.server.basic.common.banner.Banner;
 import com.github.chenmingq.server.basic.db.SqlFactory;
 import com.github.chenmingq.server.basic.handler.adapter.FieldHandlerAdapter;
@@ -36,6 +38,7 @@ public class ServerContext implements Runnable {
             FieldHandlerAdapter.getInstance().checkService();
             SqlFactory.getInstance().initDb();
             ListenerFactory.event(ListenerType.START_SERVER);
+            ExecutorUtil.heartbeatExecutor.execute(new ServerHeartbeatMessage());
             Server.init();
         } catch (Exception e) {
             e.printStackTrace();
