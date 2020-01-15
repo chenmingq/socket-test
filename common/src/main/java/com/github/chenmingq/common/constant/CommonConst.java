@@ -25,34 +25,7 @@ public class CommonConst {
     public static final String START_BANNER_NAME = "banner.txt";
 
     /**
-     * 端口
-     */
-    public static Integer PORT = 0;
-
-    /**
      * 配置文件名称
      */
     public static final String PROPERTIES_NAME = "application.properties";
-
-    /**
-     * 数据库连接池配置文件名称
-     */
-    public static final String DB_SERVER_PROPERTIES = "db_server.properties";
-
-    /**
-     *  mapper 操作对象对象地址
-     */
-    public static String MAPPER_PACKAGE;
-
-    /**
-     * service所在的包路径
-     */
-    public static String SERVICE_PACKAGE;
-
-    /**
-     * mybatis 配置名称
-     */
-    public static String MY_BATIS_XML_PATH = "mybatis-config.xml";
-
-
 }

@@ -1,5 +1,6 @@
 package com.github.chenmingq.common.utils;
 
+import com.github.chenmingq.common.config.SystemConfig;
 import org.apache.commons.lang3.RandomUtils;
 
 /**
@@ -11,7 +12,7 @@ import org.apache.commons.lang3.RandomUtils;
 public class IdUtil {
 
     public static long get() {
-        String valueOf = String.valueOf(System.currentTimeMillis());
+        String valueOf = String.valueOf(SystemConfig.configId + System.currentTimeMillis());
         int i = RandomUtils.nextInt(10000, 99999);
         return Long.parseLong(valueOf + i);
     }

@@ -1,12 +1,7 @@
 package com.github.chenmingq.server.basic.handler.adapter;
 
 import com.github.chenmingq.common.common.annotation.ScanMapping;
-import com.github.chenmingq.common.constant.CommonConst;
-import com.github.chenmingq.common.utils.LordPropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.Map;
-import java.util.Properties;
 
 
 /**
@@ -26,40 +21,6 @@ public class ServerPropertiesAdapter {
     }
 
     public ServerPropertiesAdapter() {
-    }
-
-    /**
-     * 初始化系统服务配置
-     */
-    public void initSysProperties() {
-        Properties properties = LordPropertiesUtils.lordProperties(CommonConst.PROPERTIES_NAME);
-        if (null == properties) {
-            log.error("{}", "初始化配置为空");
-            return;
-        }
-        for (Map.Entry<Object, Object> entry : properties.entrySet()) {
-            Object k = entry.getKey();
-            Object v = entry.getValue();
-            if (null == k || null == v) {
-                continue;
-            }
-            String key = (String) k;
-            String value = (String) v;
-            switch (key) {
-                case "server.port":
-                    CommonConst.PORT = Integer.parseInt(value);
-                    break;
-                case "app.mapper":
-                    CommonConst.MAPPER_PACKAGE = value;
-                    break;
-                case "app.service.package":
-                    CommonConst.SERVICE_PACKAGE = value;
-                    break;
-                default:
-                    break;
-            }
-        }
-        log.info("{}", "配置加载完成");
     }
 
     /**

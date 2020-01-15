@@ -26,8 +26,8 @@ public class BeatManager {
         return USER_BEAT_QUEUE;
     }
 
-    public void addUser(long userId) {
-        USER_BEAT_QUEUE.add(userId);
+    public void offer(long userId) {
+        USER_BEAT_QUEUE.offer(userId);
     }
 
     public void removeUser(long userId) {

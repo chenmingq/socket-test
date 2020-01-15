@@ -1,6 +1,6 @@
 package com.github.chenmingq.server.system;
 
-import com.github.chenmingq.common.constant.CommonConst;
+import com.github.chenmingq.common.config.SystemConfig;
 import com.github.chenmingq.common.utils.executor.ExecutorUtil;
 import com.github.chenmingq.server.basic.beat.ServerHeartbeatMessage;
 import com.github.chenmingq.server.basic.common.banner.Banner;
@@ -29,12 +29,12 @@ public class ServerContext implements Runnable {
     @Override
     public void run() {
         try {
+            SystemConfig.initSysConfig();
             Banner.startBanner();
             ServerMessagePool.getInstance().registerMsg();
             ListenerRegister.getInstance().registerPreparedListeners();
-            ServerPropertiesAdapter.getInstance().initSysProperties();
             ServerPropertiesAdapter.getInstance().scanMapping(this.clazz);
-            MappingHandlerAdapter.getInstance().initServiceImplClazz(CommonConst.SERVICE_PACKAGE);
+            MappingHandlerAdapter.getInstance().initServiceImplClazz(SystemConfig.scanServicePackage);
             FieldHandlerAdapter.getInstance().checkService();
             SqlFactory.getInstance().initDb();
             ListenerFactory.event(ListenerType.START_SERVER);

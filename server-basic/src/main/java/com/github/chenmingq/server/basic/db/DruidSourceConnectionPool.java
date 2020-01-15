@@ -3,7 +3,7 @@ package com.github.chenmingq.server.basic.db;
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import com.alibaba.druid.pool.DruidPooledConnection;
-import com.github.chenmingq.common.constant.CommonConst;
+import com.github.chenmingq.common.config.SystemConfig;
 import com.github.chenmingq.common.utils.LordPropertiesUtils;
 import lombok.extern.slf4j.Slf4j;
 
@@ -54,7 +54,7 @@ public class DruidSourceConnectionPool implements ConnectionPool {
         if (!initDb) {
             return;
         }
-        Properties properties = LordPropertiesUtils.lordProperties(CommonConst.DB_SERVER_PROPERTIES);
+        Properties properties = LordPropertiesUtils.lordProperties(SystemConfig.dbServerProperties);
 
         if (null == properties) {
             throw new NullPointerException("db_server_properties is null");

@@ -1,6 +1,7 @@
 package com.github.chenmingq.server.basic.common.banner;
 
 
+import com.github.chenmingq.common.config.SystemConfig;
 import com.github.chenmingq.common.constant.CommonConst;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,7 +15,10 @@ public class Banner {
     public static void startBanner() {
         InputStream resourceAsStream = Banner.class.getClassLoader().getResourceAsStream(CommonConst.START_BANNER_NAME);
         if (resourceAsStream == null) {
-            return;
+            resourceAsStream = Banner.class.getClassLoader().getResourceAsStream(SystemConfig.startBannerPath);
+            if (null == resourceAsStream) {
+                return;
+            }
         }
         BufferedReader reader = null;
         try {

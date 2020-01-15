@@ -1,6 +1,7 @@
 package com.github.chenmingq.server.basic.db;
 
 import com.github.chenmingq.common.common.annotation.MapperScan;
+import com.github.chenmingq.common.config.SystemConfig;
 import com.github.chenmingq.common.constant.CommonConst;
 import com.github.chenmingq.common.utils.ClassUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +30,10 @@ public class SqlFactory {
     public static SqlSession sqlSession;
 
     public void initDb() {
-        Set<Class<?>> classes = ClassUtil.lordClazz(MapperScan.class, CommonConst.MAPPER_PACKAGE);
+        Set<Class<?>> classes = ClassUtil.lordClazz(MapperScan.class, SystemConfig.scanMapperPackage);
         InputStream inputStream = null;
         try {
-            inputStream = Resources.getResourceAsStream(CommonConst.MY_BATIS_XML_PATH);
+            inputStream = Resources.getResourceAsStream(SystemConfig.myBatisXmlPath);
         } catch (IOException e) {
             e.printStackTrace();
         }

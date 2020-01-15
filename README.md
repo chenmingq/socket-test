@@ -13,7 +13,7 @@
 | length |4|0x16+body.length |消息总长度|
 | moduleId | 4|-|功能大模块|
 | cmdId  |4|-|具体功能|
-| body  |-|body.length|消息体|
+| body  |body.length|-|消息体|
 
 ### 注解说明
 
@@ -64,8 +64,13 @@ proto文件编译可执行的java对象
 3. 监听器的实现
 4. service服务对象实现
 5. mapper操作DB
-
 ```
+- release
+```text
+一些文件
+1. 导入该目录的sql
+```
+
 - server-all
 ```text
 服务启动
@@ -76,7 +81,9 @@ proto文件编译可执行的java对象
 
 - 服务启动
 ```text
-通过MAIN方法启动 com.github.chenmingq.server.all.ServerStart
+
+1. 修改 \server-system\src\main\resources\db_server.properties 中的db连接配置
+2. 通过MAIN方法启动 com.github.chenmingq.server.all.ServerStart
 ```
 ```java
 @ScanMapping(name = "com.github.chenmingq.server.system.controller")

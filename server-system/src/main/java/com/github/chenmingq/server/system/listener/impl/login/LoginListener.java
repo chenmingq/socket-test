@@ -20,6 +20,6 @@ public class LoginListener implements IListener {
             return;
         }
         long userId = (long) obj;
-        BeatManager.getInstance().addUser(userId);
+        BeatManager.getInstance().offer(userId);
     }
 }

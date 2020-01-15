@@ -1,6 +1,6 @@
 package com.github.chenmingq.server.system;
 
-import com.github.chenmingq.common.constant.CommonConst;
+import com.github.chenmingq.common.config.SystemConfig;
 import com.github.chenmingq.common.utils.Utils;
 import com.github.chenmingq.server.basic.handler.ServerInitializer;
 import io.netty.bootstrap.ServerBootstrap;
@@ -32,7 +32,6 @@ public class Server {
 
     private static final ScheduledExecutorService SERVICE_START_EXECUTOR;
 
-    private static int PORT;
     private static final long START_TIME;
 
     static {
@@ -56,8 +55,7 @@ public class Server {
     }
 
     public static void init() {
-        PORT = CommonConst.PORT;
-        if (PORT == 0) {
+        if (SystemConfig.port == 0) {
             throw new RuntimeException("系统配置未初始化");
         }
         ServerBootstrap serverBootstrap = new ServerBootstrap();
@@ -77,7 +75,7 @@ public class Server {
 
                 .childOption(ChannelOption.SO_SNDBUF, 65535)
                 .childOption(ChannelOption.SO_RCVBUF, 65535)
-                .localAddress(new InetSocketAddress(PORT))
+                .localAddress(new InetSocketAddress(SystemConfig.port))
                 .childHandler(new ServerInitializer());
 
         serverBootstrap.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT);
