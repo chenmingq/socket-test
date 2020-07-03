@@ -1,6 +1,5 @@
 package com.github.chenmingq.server.system.udp.code;
 
-import com.github.chenmingq.common.constant.CommonConst;
 import com.github.chenmingq.common.message.HeaderMessage;
 import com.github.chenmingq.server.system.udp.msg.UdpMessage;
 import io.netty.buffer.ByteBuf;
@@ -25,21 +24,17 @@ public class UdpEncoder extends MessageToMessageEncoder<UdpMessage> {
         HeaderMessage request = msg.getHeaderMessage();
         InetSocketAddress socketAddress = msg.getSocketAddress();
 
-
         int magic = request.getMagic();
-        byte[] body = "你好".getBytes();
-//        byte[] body = request.getBody();
+        byte[] body = request.getBody();
         int moduleId = request.getModuleId();
         int cmdId = request.getCmdId();
-
-        int length = CommonConst.HEAD_LENGTH + body.length;
 
         byteBuf.writeInt(magic)
                 .writeInt(moduleId)
                 .writeInt(cmdId)
-                .writeInt(length)
+                .writeInt(body.length)
                 .writeBytes(body);
 
-        out.add(new DatagramPacket(byteBuf,socketAddress));
+        out.add(new DatagramPacket(byteBuf, socketAddress));
     }
 }

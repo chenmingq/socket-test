@@ -27,16 +27,14 @@ public class UdpDecoder extends MessageToMessageDecoder<DatagramPacket> {
         int moduleId = in.readInt();
         int cmdId = in.readInt();
         int length = in.readInt();
-        int bodyLength = length - CommonConst.HEAD_LENGTH;
 
-//        if (in.readableBytes() < bodyLength) {
-//            return;
-//        }
-//        byte[] body = new byte[bodyLength];
-//        in.readBytes(body);
+        byte[] body = new byte[length];
+        for (int i = 0; i < length; i++) {
+            body[i] = in.readByte();
+        }
 
         HeaderMessage message = new HeaderMessage();
-//        message.setBody(body);
+        message.setBody(body);
         message.setModuleId(moduleId);
         message.setCmdId(cmdId);
         message.setMagic(magic);
