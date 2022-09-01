@@ -37,7 +37,7 @@
         <mysql.version>8.0.16</mysql.version>
         <mybatis.version>3.5.1</mybatis.version>
         <druid.version>1.1.16</druid.version>
-        <jsoup.version>1.11.3</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
         <dom4j.version>1.6.1</dom4j.version>
         <mail.version>1.4.7</mail.version>
         <protobuf.version>3.9.1</protobuf.version>
